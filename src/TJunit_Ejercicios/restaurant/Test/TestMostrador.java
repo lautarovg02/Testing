@@ -19,7 +19,7 @@ public class TestMostrador extends Testing {
     public static Pedido pedido;
 
     @BeforeClass
-    public static void cargarPedidosEjemplos() {
+    public void cargarEjemplos() {
         Ingrediente huevo = new Ingrediente("huevo", "unidades", 240, 350);
         Ingrediente harina = new Ingrediente("harina", "gramos", 10000, 450);
         Ingrediente papa = new Ingrediente("Papa", "gramos", 20000, 300);

@@ -10,5 +10,4 @@ public abstract class Testing {
         return numeroAleatorio;
     }
 
-    public static void cargarEjemplos() {}
 }

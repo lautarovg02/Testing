@@ -16,7 +16,6 @@ public class TestProducto extends Testing {
 
 
     @BeforeClass
-
     public static void cargarEjemplos() {
         Ingrediente huevo = new Ingrediente("huevo", "unidades", 240, 350);
         Ingrediente harina = new Ingrediente("harina", "gramos", 10000, 450);
@@ -67,6 +66,10 @@ public class TestProducto extends Testing {
         productos.addAll(List.of(gaseosaCola, agua, lata_coca_cola, lata_sprite, tortilla, hamburguesa_BIG_0, patatas));
     }
 
+    /*
+     * Ejercicio 1 - e
+     *  La venta de productos o elaboración de estos dejan una ganancia mayor al 20%
+     */
     @Test
     @DisplayName("Verificar que la ganancia de los productos sea mayor al 20%")
     public void TestGananciaDeProductos() {
@@ -83,6 +86,7 @@ public class TestProducto extends Testing {
         System.out.println("\nLa prueba de ganancia del producto pasó correctamente, el porcetaje de ganancia es --> " + (int) porcentajeDeGanancia + ".");
 
     }
+
 
     public float calcularPorcentajeGanancia(float precioVenta, float precioCompra) {
         float ganancia = precioVenta - precioCompra;

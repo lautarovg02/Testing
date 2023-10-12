@@ -6,13 +6,10 @@ public class ProductoBasico extends Producto implements Consumible {
 
     public ProductoBasico(String nombre, float precioUnitarioCompra, float precioUnitarioVenta) {
         super(nombre, precioUnitarioCompra, precioUnitarioVenta);
-
     }
-
 
     @Override
     public void consumirStock(int cantidad) {
-
 
     }
 
