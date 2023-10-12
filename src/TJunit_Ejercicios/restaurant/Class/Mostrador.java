@@ -42,7 +42,7 @@ public class Mostrador {
         Usuario u = p.getUsuario();
         float saldo = u.getSaldo();
 
-        if ((saldo - p.totalPedido()) >= 0)
+        if ((saldo - p.getTotalPedido()) >= 0)
             System.out.println("Cobro pedido");
         else
             throw new SinSaldoException();

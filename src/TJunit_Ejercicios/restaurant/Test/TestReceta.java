@@ -1,5 +1,6 @@
 package TJunit_Ejercicios.restaurant.Test;
 
+import TJunit_Ejercicios.restaurant.Class.ProductoElaborado;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -12,9 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class TestReceta {
+public class TestReceta extends Testing {
 
-    public static Receta p;
+    public static Receta receta;
     public static List<Receta> recetas = new ArrayList<>();
 
     @BeforeClass
@@ -40,7 +41,6 @@ public class TestReceta {
         tortilla.addIngrediente(ir4);
         tortilla.addIngrediente(ir5);
 
-
         Receta hamburguesa = new Receta("hamburguesa grande", 5,3000);
         hamburguesa.addIngrediente(ir2);
         hamburguesa.addIngrediente(ir1);
@@ -58,19 +58,18 @@ public class TestReceta {
         recetas.add(hamburguesa);
     }
 
+
+    /*
+     * Ejercicio 1 - c
+     *  Una receta está compuesta por uno o más ingredientes
+     */
     @Test
     @DisplayName("Verificar que una Receta tenga al menos un Ingrediente")
     public void testIngredientesParaRecetas(){
-        Receta receta = recetas.get(obtenerNumeroRandom(recetas.size()-1));
+        receta = recetas.get(obtenerNumeroRandom(recetas.size()-1));
         System.out.println(receta);
         Assert.assertFalse( "Error: No puede crear una reseta sin ingredientes" ,receta.getIngredientes().isEmpty());
     }
 
-
-    public int obtenerNumeroRandom(int max){
-        Random rand = new Random();
-        int numeroAleatorio = rand.nextInt(max) + 1;
-        return numeroAleatorio;
-    }
 
 }

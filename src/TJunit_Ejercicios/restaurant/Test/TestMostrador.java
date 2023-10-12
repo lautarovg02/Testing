@@ -7,7 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import TJunit_Ejercicios.restaurant.Class.*;
 import TJunit_Ejercicios.restaurant.Exceptions.ExceptionUsuario;
 
-public class TestMostrador {
+public class TestMostrador extends Testing{
 
     public static Mostrador m1 = new Mostrador();
 
@@ -16,6 +16,10 @@ public class TestMostrador {
 
     }
 
+    /*
+     * Ejercicio 1 - a
+     *  No se pueden agregar usuarios repetidos
+     */
     @Test
     @DisplayName("Verificar que no haya dos pedidos que tengan el mismo usuario")
     public void testAgregarUsuarioApedido() {

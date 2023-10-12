@@ -9,13 +9,13 @@ import TJunit_Ejercicios.restaurant.Class.Usuario;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestUsuario {
+public class TestUsuario extends Testing{
 
     public static List<Usuario> ejemplos = new ArrayList<>();
     public static Usuario usuarioTest;
 
     @BeforeClass
-    public static void cargarEjemplos() throws Exception {
+    public static void cargarEjemplos() {
         Usuario u1 = new Usuario("Homero Simpson", 0, 350, "homerojsimpson@springfield.com");
         Usuario u2 = new Usuario("Barney Gomez", 0, 0, "el14gomezspringfield.com");
         Usuario u3 = new Usuario("Edna Krabappel", 1, 0, "ednak@springfield.com");
@@ -25,6 +25,11 @@ public class TestUsuario {
         ejemplos.add(u3);
         ejemplos.add(u4);
     }
+
+    /*
+    * Ejercicio 1 - b
+    *  No se puede crear un usuario con un correo electrónico inválido (contiene @)
+    */
 
     @Test
     @DisplayName("Verificar que crecion de Usuario Con@")

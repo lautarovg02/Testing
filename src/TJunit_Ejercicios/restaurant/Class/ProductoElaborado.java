@@ -4,6 +4,9 @@ public class ProductoElaborado extends Producto {
 
     Receta receta;
 
+    String nombreComercial;
+    int tiempoDeCoccion;
+
     public Receta getReceta() {
         return receta;
     }
@@ -28,12 +31,15 @@ public class ProductoElaborado extends Producto {
         this.tiempoDeCoccion = tiempoDeCoccion;
     }
 
-    String nombreComercial;
-    int tiempoDeCoccion;
+
 
     public ProductoElaborado(String nombre, float precioUnitarioVenta) {
         super(nombre, 0, precioUnitarioVenta);
         // TODO Auto-generated constructor stub
+    }
+
+    public ProductoElaborado(String nombre, float precioUnitarioCompra, float precioUnitarioVenta) {
+        super(nombre, precioUnitarioCompra, precioUnitarioVenta);
     }
 
     @Override

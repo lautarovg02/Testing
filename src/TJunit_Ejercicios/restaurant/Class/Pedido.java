@@ -54,19 +54,21 @@ public class Pedido {
         items.remove(item);
     }
 
-    public float totalPedido() {
-        float acum = 0.0f;
+    public float getTotalPedido() {
+        float acum = 0.0f, precioUnitarioVenta ;
+        int cant = 0;
         for (int i = 0; i < items.size(); i++) {
             ItemPedido item = items.get(i);
-
-            acum += (item.getCantidad()) * (item.getItem().getPrecioUnitarioVenta());
+            cant =item.getCantidad();
+            precioUnitarioVenta = item.getItem().getPrecioUnitarioVenta();
+            acum += (cant) * (precioUnitarioVenta);
         }
 
         return acum;
     }
 
     public void solicitarPedido() throws SinSaldoException {
-        float total = totalPedido();
+        float total = getTotalPedido();
         this.getUsuario().descontarSaldo(total);
         this.setEstado("Pagado");
         System.out.println("Pedido pagado...");
@@ -77,7 +79,7 @@ public class Pedido {
         this.setEstado("En preparación");
         System.out.println("Pedido aceptado en cocina... Cocinandose...");
         for (int i = 0; i < getItems().size(); i++) {
-			//	this.getItems().get(i).getConsumible().preparar();
+            //	this.getItems().get(i).getConsumible().preparar();
         }
     }
 
@@ -114,4 +116,13 @@ public class Pedido {
         this.setEstado("Entregado");
     }
 
+    @Override
+    public String toString() {
+        return "Pedido{" +
+                "                            items=" + items +
+                ",                             usuario=" + usuario +
+                ",                             estado='" + estado + '\'' +
+                ",                             id=" + id +
+                '}' + "\n";  // Agregado un salto de línea aquí
+    }
 }
