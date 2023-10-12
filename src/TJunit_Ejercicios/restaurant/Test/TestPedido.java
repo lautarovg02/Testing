@@ -114,7 +114,6 @@ public class TestPedido extends Testing {
         System.out.println("Saldo del Usuario antes del descuento del monto --> : " + saldoUsuario);
         System.out.println("Saldo del Usuario luedo del descuento del monto --> : " + saldoFinal);
 
-
     }
 
 }
