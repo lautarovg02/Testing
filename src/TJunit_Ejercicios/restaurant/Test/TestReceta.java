@@ -67,8 +67,14 @@ public class TestReceta extends Testing {
     @DisplayName("Verificar que una Receta tenga al menos un Ingrediente")
     public void testIngredientesParaRecetas(){
         receta = recetas.get(obtenerNumeroRandom(recetas.size()-1));
-        System.out.println(receta);
-        Assert.assertFalse( "Error: No puede crear una reseta sin ingredientes" ,receta.getIngredientes().isEmpty());
+        Assert.assertFalse( "Error: No puede crear una reseta sin ingredientes, la lista de su receta se encuentra vacia. Su lista contiene --> :" + receta.getIngredientes().size() + " ingredientes" ,receta.getIngredientes().isEmpty());
+
+        // Informar que la prueba ha pasado correctamente
+        System.out.println("La prueba de Ingredientes de la Receta de " + receta.getNombreInterno() + " pasó correctamente. La receta tiene --> " + receta.getIngredientes().size()  + " ingredientes.");
+        for (ItemReceta i: receta.getIngredientes()) {
+            System.out.println("Ingrediente --> : " + i.getIngrediente().getNombre());
+        }
+
     }
 
 

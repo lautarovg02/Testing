@@ -34,10 +34,13 @@ public class TestUsuario extends Testing{
     @Test
     @DisplayName("Verificar que crecion de Usuario Con@")
     public void testCrearUsuario(){
-        Usuario u1 = ejemplos.get(1);
-        System.out.println(u1);
-        String correo = u1.getEmail();
-        Assert.assertTrue( "Error: Su correo no contiene @" ,correo.contains("@"));
+        usuarioTest = ejemplos.get(obtenerNumeroRandom(ejemplos.size()-1));
+        String correo = usuarioTest.getEmail();
+        Assert.assertTrue( "Error: Su correo no contiene @ --> : " + correo + " ." ,correo.contains("@"));
+
+        // Informar que la prueba ha pasado correctamente
+        System.out.println("\nLa prueba del Correo del Usuario pasó correctamente. El Correo del mismo contiene @ --> Email:  " + usuarioTest.getEmail() + ".");
+
     }
 
 }
