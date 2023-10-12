@@ -18,14 +18,14 @@ public class TestPedido extends Testing {
 
 
     @BeforeClass
-    public static void cargarEjemplos(){
+    public static void cargarEjemplos() {
 
         Ingrediente huevo = new Ingrediente("huevo", "unidades", 240, 350);
-        Ingrediente harina = new Ingrediente("harina", "gramos", 10000,450);
-        Ingrediente papa = new Ingrediente("Papa", "gramos", 20000,300);
-        Ingrediente sal = new Ingrediente("Sal", "gramos", 1000,400);
-        Ingrediente carnePicada = new Ingrediente("Carne picada", "grmos", 10000,2200);
-        Ingrediente panHamburguesa = new Ingrediente("Pan de Hamburguesa", "unidades", 100,800);
+        Ingrediente harina = new Ingrediente("harina", "gramos", 10000, 450);
+        Ingrediente papa = new Ingrediente("Papa", "gramos", 20000, 300);
+        Ingrediente sal = new Ingrediente("Sal", "gramos", 1000, 400);
+        Ingrediente carnePicada = new Ingrediente("Carne picada", "grmos", 10000, 2200);
+        Ingrediente panHamburguesa = new Ingrediente("Pan de Hamburguesa", "unidades", 100, 800);
         Producto gaseosaCola = new ProductoBasico("Coca Cola", 10, 20);
         Producto agua = new ProductoBasico("Agua", 10, 22);
 
@@ -38,18 +38,18 @@ public class TestPedido extends Testing {
         ItemReceta ir6 = new ItemReceta(panHamburguesa, 1);
 
 
-        Receta tortilla = new Receta("Tortilla", 15,200);
+        Receta tortilla = new Receta("Tortilla", 15, 200);
         tortilla.addIngrediente(ir4);
         tortilla.addIngrediente(ir5);
 
 
-        Receta hamburguesa = new Receta("hamburguesa grande", 5,3000);
+        Receta hamburguesa = new Receta("hamburguesa grande", 5, 3000);
         hamburguesa.addIngrediente(ir2);
         hamburguesa.addIngrediente(ir1);
         hamburguesa.addIngrediente(ir3);
         hamburguesa.addIngrediente(ir6);
 
-        Receta papasFritas = new Receta("papas fritas", 7,300);
+        Receta papasFritas = new Receta("papas fritas", 7, 300);
         papasFritas.addIngrediente(ir5);
         papasFritas.addIngrediente(ir3);
 
@@ -88,37 +88,33 @@ public class TestPedido extends Testing {
         pedidos.add(pedido2);
         pedidos.add(pedido3);
 
-//        try {
-//            p.solicitarPedido();
-//
-//            p.prepararPedido();
-//            p.terminarPedido();
-//            p.entregarPedido();
-//
-//
-//        } catch (SinSaldoException ex) {
-//            System.out.println("No posee saldo suficiente");
-//        }
-
-        System.out.println("Saldo Usuario " + u1.getSaldo());
     }
 
     /*
-    * Ejercicio 1 - d
-    * Un pedido reduce en saldo de un usuario
-    */
+     * Ejercicio 1 - d
+     * Un pedido reduce en saldo de un usuario
+     */
     @Test
     @DisplayName("Verificar que se le descuente el monto del pedido al Usuario")
     public void testDescontarPedidoAUsuario() throws SinSaldoException {
-        Pedido pedido = pedidos.get(obtenerNumeroRandom(pedidos.size()-1));
-        float costoDelPedido =  pedido.getTotalPedido();
+        Pedido pedido = pedidos.get(obtenerNumeroRandom(pedidos.size() - 1));
         float saldoUsuario = pedido.getUsuario().getSaldo();
+        float costoDelPedido = pedido.getTotalPedido();
         pedido.solicitarPedido();
         float saldoFinal = pedido.getUsuario().getSaldo();
         System.out.println("costoDelPedido " + costoDelPedido);
         System.out.println("saldoUsuario " + saldoUsuario);
         System.out.println("saldoFinal " + saldoFinal);
-        Assert.assertTrue("Error: Nose desconto el saldo del pedido: ", saldoFinal == (saldoUsuario - costoDelPedido));
+
+        Assert.assertEquals("Error: Nose desconto el saldo del pedido. Saldo Antes del pedido:  " + saldoUsuario  + ", Saldo luego del pedido: "+ saldoFinal + ". ", saldoFinal, (saldoUsuario - costoDelPedido), 0.0);
+
+        // Informar que la prueba ha pasado correctamente
+        System.out.println("\nLa prueba de ganancia del Pedido pasó correctamente, el monto del pedido se desconto con exito al saldo del Usuario: ");
+        System.out.println("Costo del Pedido --> : " + costoDelPedido);
+        System.out.println("Saldo del Usuario antes del descuento del monto --> : " + saldoUsuario);
+        System.out.println("Saldo del Usuario luedo del descuento del monto --> : " + saldoFinal);
+
+
     }
 
 }

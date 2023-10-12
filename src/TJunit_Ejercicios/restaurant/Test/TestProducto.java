@@ -77,10 +77,10 @@ public class TestProducto extends Testing {
         float porcentajeDeGanancia = calcularPorcentajeGanancia(precioDeVentaPorUnidad, precioDeCompraPorUnidad);
         System.out.println("Producto: " + producto.getNombre() + " ,PrecioDeCompraPorUnidad: " + precioDeCompraPorUnidad + ", precioDeVentaPorUnidad: " + precioDeVentaPorUnidad + ", porcentajeDeGanancia: " + porcentajeDeGanancia);
 
-        Assert.assertTrue("Error: El porcentaje de ganancia del producto es menor al establecido por las reglas negocio", porcentajeDeGanancia >= PORCENTAJE_DE_GANANCIA_MINIMA);
+        Assert.assertTrue("Error: El porcentaje de ganancia del producto es menor al establecido por las reglas negocio. Su porcentaje es --> : " + porcentajeDeGanancia + " .", porcentajeDeGanancia >= PORCENTAJE_DE_GANANCIA_MINIMA);
 
         // Informar que la prueba ha pasado correctamente
-        System.out.println("La prueba de ganancia del producto pasó correctamente, el porcetaje de ganancia es --> " + (int) porcentajeDeGanancia + ".");
+        System.out.println("\nLa prueba de ganancia del producto pasó correctamente, el porcetaje de ganancia es --> " + (int) porcentajeDeGanancia + ".");
 
     }
 
