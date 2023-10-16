@@ -4,11 +4,14 @@ import org.junit.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Random;
+import java.util.*;
+import java.util.stream.Stream;
 
 import EjemploEnClaseJunit.Persona;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.DynamicTest;
+import org.junit.jupiter.api.TestFactory;
 
 ///** class PersonaTest.java */
 ///** class PersonaTest.java */
@@ -17,6 +20,36 @@ public class PersonaTest {
     static Persona ejemplos[];
     static Persona casoActual;
     static Persona buCasoActual;
+
+    @Test
+    @DisplayName("Verificando varias características a la vez")
+    public void testVariasCaracteristicas() {
+        Persona p = new Persona("Mickey","2.234.528","1983-04-01",38,true);
+        Assertions.assertAll("Probando que se cumplen varias características",
+                ()-> Assert.assertEquals("No se almacena el dni",p.getDNI(), "2.234.528"),
+                ()-> Assert.assertEquals("Error al almacenar la edad",p.getEdad(),38)
+        );
+
+    }
+
+    @TestFactory
+    Stream<DynamicTest> dynamicTestsFromUsuarios() {
+        List<Persona> testList = new ArrayList<Persona>();
+        Persona p1 = new Persona("Juan","26.150.235","1979-01-01",44,true);
+        Persona p2 = new Persona("Pedro","27.280.234","1980-02-01",43,true);
+        Persona p3 = new Persona("Maria","28.184.259","1981-03-01",42,true);
+        testList.add(p1);
+        testList.add(p2);
+        testList.add(p3);
+        return testList.stream()
+                .map(dom -> DynamicTest.dynamicTest("Testing: " + dom, () -> {
+
+                    Assert.assertEquals(dom.getEdad(),getEdad(dom.getFechaNacimiento()));
+                }));
+
+    }
+
+
 
     @BeforeClass
     public static void cargarEjemplos() throws Exception {
