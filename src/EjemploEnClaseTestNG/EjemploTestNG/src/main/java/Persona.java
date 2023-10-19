@@ -1,4 +1,6 @@
 package tudai.tdv.java;
+import EjemploEnClaseTestNG.EjemploTestNG.src.main.java.EdadNopermitidaException;
+
 import java.text.DateFormat;
 import java.time.LocalDate;
 import java.util.Calendar;
@@ -41,9 +43,13 @@ public class Persona {
 				      }
 
 
-	public void setEdad(int edad) {
+	/*** En persona.java modifico el método setEdad() para lanzar una excepcion *****/
+	public void setEdad(int edad) throws EdadNopermitidaException {
+		if (edad<0) throw new EdadNopermitidaException("La edad no puede ser negativa");
 		this.edad = edad;
 	}
+
+
 	public boolean isHabilitadoParaVotar() {
 		return habilitadoParaVotar;
 	}
@@ -59,9 +65,13 @@ public class Persona {
 	String dni;
 	int edad;
 	boolean habilitadoParaVotar;
-		
-	
-	
-	
-	
+
+
+	@Override
+	public String toString() {
+		return "Persona{" +
+				" nombre='" + nombre + '\'' +
+				", dni='" + dni + '\'' +
+				'}' + "\n";  // Agregado un salto de línea aquí
+	}
 }

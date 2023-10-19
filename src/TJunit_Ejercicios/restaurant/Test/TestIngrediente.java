@@ -1,6 +1,5 @@
 package TJunit_Ejercicios.restaurant.Test;
 
-import TJunit_Ejercicios.restaurant.Class.*;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -9,41 +8,41 @@ import org.junit.jupiter.api.DisplayName;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestIngrediente extends Testing{
-    static Ingrediente ingrediente;
+public class TestIngrediente extends Testing {
+    static TJunit_Ejercicios.restaurant.Class.Ingrediente ingrediente;
 
     @BeforeClass
     public static void cargarEjemplos() {
         // * USUARIOS
-        Usuario u1 = new Usuario("Homero Simpson", 0, 350, "homerojsimpson@springfield.com");
-        Usuario u2 = new Usuario("Barney Gomez", 0, 0, "el14gomez@springfield.com");
-        Usuario u3 = new Usuario("Edna Krabappel", 1, 0, "ednak@springfield.com");
-        Usuario u4 = new Usuario("Homero", 0, 0, "homerojsimpson@springfield.com");
+        TJunit_Ejercicios.restaurant.Class.Usuario u1 = new TJunit_Ejercicios.restaurant.Class.Usuario("Homero Simpson", 0, 350, "homerojsimpson@springfield.com");
+        TJunit_Ejercicios.restaurant.Class.Usuario u2 = new TJunit_Ejercicios.restaurant.Class.Usuario("Barney Gomez", 0, 0, "el14gomez@springfield.com");
+        TJunit_Ejercicios.restaurant.Class.Usuario u3 = new TJunit_Ejercicios.restaurant.Class.Usuario("Edna Krabappel", 1, 0, "ednak@springfield.com");
+        TJunit_Ejercicios.restaurant.Class.Usuario u4 = new TJunit_Ejercicios.restaurant.Class.Usuario("Homero", 0, 0, "homerojsimpson@springfield.com");
 
         // * INGREDIENTES
-        Ingrediente huevo = new Ingrediente("huevo", "unidades", 240, 350);
-        Ingrediente harina = new Ingrediente("harina", "gramos", 10000, 450);
-        Ingrediente pan = new Ingrediente("Pan", "gramos", 0, 450);
-        Ingrediente papa = new Ingrediente("Papa", "gramos", 20000, 300);
-        Ingrediente sal = new Ingrediente("Sal", "gramos", 1000, 400);
-        Ingrediente carnePicada = new Ingrediente("Carne picada", "grmos", 10000, 2200);
-        Ingrediente panHamburguesa = new Ingrediente("Pan de Hamburguesa", "unidades", 100, 800);
-        Ingrediente cebolla = new Ingrediente("Cebolla", "gramos", 500, 200);
-        Ingrediente ajo = new Ingrediente("Ajo", "gramos", 100, 150);
-        Ingrediente tomate = new Ingrediente("Tomate", "gramos", 300, 300);
-        Ingrediente queso = new Ingrediente("Queso", "gramos", 800, 500);
-        Ingrediente aceiteOliva = new Ingrediente("Aceite de Oliva", "mililitros", 500, 700);
+        TJunit_Ejercicios.restaurant.Class.Ingrediente huevo = new TJunit_Ejercicios.restaurant.Class.Ingrediente("huevo", "unidades", 240, 350);
+        TJunit_Ejercicios.restaurant.Class.Ingrediente harina = new TJunit_Ejercicios.restaurant.Class.Ingrediente("harina", "gramos", 10000, 450);
+        TJunit_Ejercicios.restaurant.Class.Ingrediente pan = new TJunit_Ejercicios.restaurant.Class.Ingrediente("Pan", "gramos", 0, 450);
+        TJunit_Ejercicios.restaurant.Class.Ingrediente papa = new TJunit_Ejercicios.restaurant.Class.Ingrediente("Papa", "gramos", 20000, 300);
+        TJunit_Ejercicios.restaurant.Class.Ingrediente sal = new TJunit_Ejercicios.restaurant.Class.Ingrediente("Sal", "gramos", 1000, 400);
+        TJunit_Ejercicios.restaurant.Class.Ingrediente carnePicada = new TJunit_Ejercicios.restaurant.Class.Ingrediente("Carne picada", "grmos", 10000, 2200);
+        TJunit_Ejercicios.restaurant.Class.Ingrediente panHamburguesa = new TJunit_Ejercicios.restaurant.Class.Ingrediente("Pan de Hamburguesa", "unidades", 100, 800);
+        TJunit_Ejercicios.restaurant.Class.Ingrediente cebolla = new TJunit_Ejercicios.restaurant.Class.Ingrediente("Cebolla", "gramos", 500, 200);
+        TJunit_Ejercicios.restaurant.Class.Ingrediente ajo = new TJunit_Ejercicios.restaurant.Class.Ingrediente("Ajo", "gramos", 100, 150);
+        TJunit_Ejercicios.restaurant.Class.Ingrediente tomate = new TJunit_Ejercicios.restaurant.Class.Ingrediente("Tomate", "gramos", 300, 300);
+        TJunit_Ejercicios.restaurant.Class.Ingrediente queso = new TJunit_Ejercicios.restaurant.Class.Ingrediente("Queso", "gramos", 800, 500);
+        TJunit_Ejercicios.restaurant.Class.Ingrediente aceiteOliva = new TJunit_Ejercicios.restaurant.Class.Ingrediente("Aceite de Oliva", "mililitros", 500, 700);
 
         //* AGREGANDO CONSUMIBLES(INGREDIENTES) A LA ALMACEN
-        Almacen.Stock.addAll(List.of(huevo,harina,sal,papa,carnePicada,panHamburguesa));
-        Almacen.Stock.addAll(List.of(cebolla, ajo, tomate, queso, aceiteOliva));
-        System.out.println("Ingredientes de la Almacen -->: " + Almacen.Stock);
+        TJunit_Ejercicios.restaurant.Class.Almacen.Stock.addAll(List.of(huevo,harina,sal,papa,carnePicada,panHamburguesa));
+        TJunit_Ejercicios.restaurant.Class.Almacen.Stock.addAll(List.of(cebolla, ajo, tomate, queso, aceiteOliva));
+        System.out.println("Ingredientes de la Almacen -->: " + TJunit_Ejercicios.restaurant.Class.Almacen.Stock);
     }
 
     @Test
     @DisplayName("Verificar que cuando se reponga Stock este Aumente")
     public  void testVerificarElAumentoDeStock(){
-        ingrediente = (Ingrediente) Almacen.Stock.get(Almacen.Stock.size()-1);
+        ingrediente = (TJunit_Ejercicios.restaurant.Class.Ingrediente) TJunit_Ejercicios.restaurant.Class.Almacen.Stock.get(TJunit_Ejercicios.restaurant.Class.Almacen.Stock.size()-1);
         System.out.println("Ingrediente a testear --> : " + ingrediente.getNombre());
         int stock = ingrediente.getStock();
         ingrediente.reponerStock(4);

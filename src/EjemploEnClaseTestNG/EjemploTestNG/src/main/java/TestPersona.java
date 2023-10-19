@@ -1,5 +1,10 @@
+package EjemploEnClaseTestNG.EjemploTestNG.src.main.java;
+
+import EjemploEnClaseJunit.Persona;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.text.ParseException;
@@ -9,26 +14,39 @@ import java.util.Date;
 
 public class TestPersona {
     @DataProvider
-    public tudai.tdv.java.Persona[] GeneradorPersona() {
+    public Object[][] GeneradorPersona() {
         System.out.println("Genero casos");
-        return new tudai.tdv.java.Persona[]{
-                new tudai.tdv.java.Persona("Juan", "26.150.235", "1979-01-01", 42, true),
-                new tudai.tdv.java.Persona("Pedro", "27.280.234", "1980-02-01", 41, true),
-                new tudai.tdv.java.Persona("Maria", "28.184.259", "1981-03-01", 47, true),
-                new tudai.tdv.java.Persona("Cecilia", "32.234.528", "1983-04-01", 38, true),
-                new tudai.tdv.java.Persona("Carlos", "33.124.235", "1985-04-01", 36, true),
-                new tudai.tdv.java.Persona("Jose", "35.345.534", "1987-04-01", 34, true)
-
+        return new Object[][]{
+                {new Persona("Juan", "26.150.235", "1979-01-01", 44, true)},
+                {new Persona("Pedro", "27.280.234", "1980-02-01", 43, true)},
+                {new Persona("Maria", "28.184.259", "1981-03-01", 47, true)},
+                {new Persona("Cecilia", "32.234.528", "1983-04-01", 40, true)},
+                {new Persona("Carlos", "33.124.235", "1985-04-01", 36, true)},
+                {new Persona("Jose", "35.345.534", "1987-04-01", 34, true)}
         };
     }
 
-    @Test(dataProvider = "GeneradorPersona")
-    public void testEdadBienCalculada(tudai.tdv.java.Persona p) {
-
+    @Test(dataProvider = "GeneradorPersona", invocationCount = 2)
+    public void testEdadBienCalculada(Persona p) {
         int edadReportada = p.getEdad();
         int edadReal = getEdad(p.getFechaNacimiento());
-        Assert.assertTrue(edadReportada == edadReal);
-        //Assert.assertTrue("Fallo en el calculo de la edad",edadReportada == edadReal);
+        Assert.assertEquals(edadReal, edadReportada);
+    }
+
+
+    /*****+ TEST con parametros: En test Persona agregamos ****/
+    @Test
+    @Parameters({"nombre","dni","fnac"})
+    public void testConParametros(@Optional("Pepe") String nombre , @Optional("20.345.678") String dni, @Optional("2001-2-3")String fNac)
+    {
+        Persona p = new Persona(nombre, dni, fNac, 0, false);
+        System.out.println(p);
+    }
+    @Test (expectedExceptions = {EdadNopermitidaException.class})
+    public void testNoPermitirEdadesNegativas() throws EdadNopermitidaException {
+        Persona p= new Persona("Anibal","26.150.235","1979-01-01",44,true);
+//Fuerzo a una edad negativa
+        p.setEdad(-1);
     }
 
 
