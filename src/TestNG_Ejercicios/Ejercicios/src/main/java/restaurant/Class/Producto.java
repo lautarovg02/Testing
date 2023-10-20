@@ -36,6 +36,6 @@ public abstract class Producto {
 		this.nombre = nombre;
 	}
 
-	public abstract void despachar(int cantidad);
+	public abstract void despachar(int cantidad) throws TestNG_Ejercicios.Ejercicios.src.main.java.restaurant.Exceptions.ExceptionCantidadDeIngredientenNoDisponible;
 
 }

@@ -13,7 +13,7 @@ public class Almacen {
         cual.reponerStock(cuanto);
     }
 
-    public static void ExtraerConsumibles(Consumible cual, int cuanto) {
+    public static void ExtraerConsumibles(Consumible cual, int cuanto) throws TestNG_Ejercicios.Ejercicios.src.main.java.restaurant.Exceptions.ExceptionCantidadDeIngredientenNoDisponible {
         cual.consumirStock(cuanto);
     }
 

@@ -42,7 +42,7 @@ public class ProductoElaborado extends Producto {
     }
 
     @Override
-    public void despachar(int cantidad) {
+    public void despachar(int cantidad) throws TestNG_Ejercicios.Ejercicios.src.main.java.restaurant.Exceptions.ExceptionCantidadDeIngredientenNoDisponible {
         Receta r = this.getReceta();
         for (int i = 0; i < r.getIngredientes().size(); i++) {
             ItemReceta ingredienteActual = r.getIngredientes().get(i);

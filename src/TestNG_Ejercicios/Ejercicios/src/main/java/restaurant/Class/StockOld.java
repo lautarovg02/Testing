@@ -53,7 +53,7 @@ public class StockOld {
     }
 
 
-    public static void consumirIngredientes(Consumible consumible, int cantidad) throws SinSuficientesIngredientesException {
+    public static void consumirIngredientes(Consumible consumible, int cantidad) throws SinSuficientesIngredientesException, TestNG_Ejercicios.Ejercicios.src.main.java.restaurant.Exceptions.ExceptionCantidadDeIngredientenNoDisponible {
         if (consumible.getStock() - cantidad < 0) {
             throw new SinSuficientesIngredientesException();
         } else consumible.consumirStock(cantidad);//setStock(consumible.getStock()-cantidad);

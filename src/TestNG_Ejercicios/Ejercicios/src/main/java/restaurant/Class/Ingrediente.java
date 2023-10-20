@@ -17,10 +17,10 @@ public class Ingrediente implements Consumible {
     }
 
 
-    public void consumirStock(int cantidad) {
+    public void consumirStock(int cantidad) throws TestNG_Ejercicios.Ejercicios.src.main.java.restaurant.Exceptions.ExceptionCantidadDeIngredientenNoDisponible {
+        if(this.getStock() < cantidad) throw new TestNG_Ejercicios.Ejercicios.src.main.java.restaurant.Exceptions.ExceptionCantidadDeIngredientenNoDisponible("La cantidad de ingredientes que necesita no puede ser menor al stock disponible");
         this.cantidad -= cantidad;
     }
-
     public void reponerStock(int cantidad) {
 
         this.cantidad += cantidad;

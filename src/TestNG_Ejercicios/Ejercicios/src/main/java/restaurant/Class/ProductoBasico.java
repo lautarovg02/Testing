@@ -31,7 +31,7 @@ public class ProductoBasico extends Producto implements Consumible {
     }
 
     //@Override
-    public void despachar(int cantidad) {
+    public void despachar(int cantidad) throws TestNG_Ejercicios.Ejercicios.src.main.java.restaurant.Exceptions.ExceptionCantidadDeIngredientenNoDisponible {
         Almacen.ExtraerConsumibles(this, cantidad);
 
     }

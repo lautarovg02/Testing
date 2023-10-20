@@ -43,7 +43,7 @@ public class ItemPedido {
     }
 
 
-    public void despachar() {
+    public void despachar() throws TestNG_Ejercicios.Ejercicios.src.main.java.restaurant.Exceptions.ExceptionCantidadDeIngredientenNoDisponible {
         this.getItem().despachar(this.getCantidad());
     }
 
