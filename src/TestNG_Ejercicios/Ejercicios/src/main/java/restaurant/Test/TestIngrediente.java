@@ -14,10 +14,10 @@ public class TestIngrediente {
     static List<Ingrediente> ingredientes = new ArrayList<>();
 
     /*
-    * Ejercicio 1. Implemente un generador de Ingredientes con 10 items.
-    */
+     * Ejercicio 1. Implemente un generador de Ingredientes con 10 items.
+     */
     @DataProvider
-    public Object[][] GeneradorDeIngredientesCon10Items(){
+    public Object[][] GeneradorDeIngredientesCon10Items() {
         System.out.println("Generando casos");
         return new Object[][]{
                 {new Ingrediente("huevo", "unidades", 10, 350)},
@@ -35,7 +35,7 @@ public class TestIngrediente {
     }
 
     @BeforeClass
-    public static void crearIngredientes(){
+    public static void crearIngredientes() {
         // * INGREDIENTES
         Ingrediente huevo = new Ingrediente("huevo", "unidades", 30, 350);
         Ingrediente harina = new Ingrediente("harina", "gramos", 10, 450);
@@ -50,28 +50,38 @@ public class TestIngrediente {
         Ingrediente queso = new Ingrediente("Queso", "gramos", 20, 500);
         Ingrediente aceiteOliva = new Ingrediente("Aceite de Oliva", "mililitros", 500, 700);
 
-        ingredientes.addAll(List.of(aceiteOliva,queso,tomate,ajo,huevo,harina,cebolla,pan,sal,papa,carnePicada,panHamburguesa));
+        ingredientes.addAll(List.of(aceiteOliva, queso, tomate, ajo, huevo, harina, cebolla, pan, sal, papa, carnePicada, panHamburguesa));
     }
 
-    public static Ingrediente obtenerIngredienteRandom(){
+    public static Ingrediente obtenerIngredienteRandom() {
         Random random = new Random();
-        return ingredientes.get(random.nextInt(ingredientes.size()-1));
+        return ingredientes.get(random.nextInt(ingredientes.size() - 1));
     }
 
+    /*
+    * 2. Implemente un test consumidor de ingredientes aleatorio que compruebe que su nombre no exceda los 10 caracteres
+    */
     @Test(invocationCount = 4)
-    public void testNombreDeIngredienteMenorA10Caracteres(){
+    public void testNombreDeIngredienteMenorA10Caracteres() {
         Ingrediente ingrediente = obtenerIngredienteRandom();
         String nombre = ingrediente.getNombre();
         System.out.println("--------------------------------------------------------------------");
         System.out.println("Ingrediente a testear: " + nombre + "\n");
-        Assert.assertTrue(nombre.length() <= 10,"Error: El nombre de este ingrediente es mayor a 9 --> " + nombre + "\n");
+        Assert.assertTrue(nombre.length() <= 10, "Error: El nombre de este ingrediente es mayor a 9 --> " + nombre + "\n");
         System.out.println("La prueba a pasado con exito, el nombre de su ingrediente es menor a 10" + "\n");
     }
+
+    /*
+     * 3. Pruebe si es posible descontar cantidades de ingredientes aun cuando esta cantidad disponible es menor a 0.
+     * ¿Como se actuaría ante esta situación?
+     * Ante esta situacion, habria que crear y ubicar una excepcion dentro del metodo encargado de descontar al stock la cantidad
+     * deseada, para que cuando esta sea mayor a la cant de stock disponible se dispare esta Excpetion.
+     */
     @Test(invocationCount = 10)
     public void testDescontarIngredientesCuandoLaCantDisponibleEsCero() throws TestNG_Ejercicios.Ejercicios.src.main.java.restaurant.Exceptions.ExceptionCantidadDeIngredientenNoDisponible {
         Ingrediente ingrediente = obtenerIngredienteRandom();
         System.out.println("--------------------------------------------------------------------");
-        System.out.println("Ingrediente a testear: " + ingrediente.getNombre() + "-- Cantidad de Stock disponible : " + ingrediente.getStock() +"\n");
+        System.out.println("Ingrediente a testear: " + ingrediente.getNombre() + "-- Cantidad de Stock disponible : " + ingrediente.getStock() + "\n");
         ingrediente.consumirStock(10);
         int cantLuegoDeDescontar = ingrediente.getStock();
         Assert.assertTrue(cantLuegoDeDescontar >= 0);
@@ -80,9 +90,9 @@ public class TestIngrediente {
     }
 
     @Test(dataProvider = "GeneradorDeIngredientesCon10Items")
-    public void testGeneradorDeIngredientes(Ingrediente i){
+    public void testGeneradorDeIngredientes(Ingrediente i) {
         System.out.println(i);
-        Assert.assertNotEquals("Error: este objeto es nulo" , i, null);
+        Assert.assertNotEquals("Error: este objeto es nulo", i, null);
     }
 
 

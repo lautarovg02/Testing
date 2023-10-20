@@ -84,7 +84,7 @@ public class Usuario {
         this.email = email;
     }
 
-    float descontarSaldo(float cuanto) throws SinSaldoException {
+    public float descontarSaldo(float cuanto) throws SinSaldoException {
         if ((saldoCuenta - cuanto) < 0) throw new SinSaldoException();
         else
             saldoCuenta -= cuanto;
